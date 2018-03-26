@@ -29,8 +29,8 @@ local incorrectAnswer
 
 local function AskQuestion()
     --generate 2 random numbers between a max. and a min. number
-    randomNumber1 = math.random(0, 10)
-    randomNumber2 = math.random(0, 10)
+    randomNumber1 = math.random(10, 20)
+    randomNumber2 = math.random(10, 20)
 
     correctAnswer = randomNumber1 + randomNumber2
 
@@ -87,7 +87,7 @@ correctObject:setTextColor(155/255, 42/255, 198/255)
 correctObject.isVisible = false
 
 --Create numeric field
-numericField = native.newTextField( display.contentWidth/2, display.contentHeight/2, 150, 80 )
+numericField = native.newTextField(500 ,350 , 150, 80 )
 numericField.inputType = "number"
 
 --create the correct text object and make it invisible
@@ -97,11 +97,13 @@ incorrectAnswer.isVisible = false
 
 
 --add the event listener for the numeric field
-numericField:addEventListener( "userInput", NumericFieldListener)
-
 ------------------------------------------------------------------------------------------
 --FUNCTION CALLS
 ------------------------------------------------------------------------------------------
+
+
+
+numericField:addEventListener( "userInput", NumericFieldListener)
 
 --call the function to ask the question
 AskQuestion()
