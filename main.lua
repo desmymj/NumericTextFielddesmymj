@@ -1,5 +1,5 @@
 -- Title: NumericTextFields
--- Name: Desmt MJ
+-- Name: Desmy MJ
 -- Course: ICS2O/3C
 -- This program...
 
@@ -26,17 +26,35 @@ local incorrectAnswer
 -------------------------------------------------------------------------------------------
 --LOCAL FUNCTIONS
 -------------------------------------------------------------------------------------------
-
 local function AskQuestion()
+
+ -- program chooses a random number between 1-3
+   randomOperation = math.random(1,3)
+    
     --generate 2 random numbers between a max. and a min. number
     randomNumber1 = math.random(10, 20)
     randomNumber2 = math.random(10, 20)
-
+    randomNumber3 = math.random(1, 20)
+    randomNumber4 = math.random(1, 20)
     correctAnswer = randomNumber1 + randomNumber2
 
 -- create question in text object
     questionObject.text = randomNumber1 .. " + " .. randomNumber2 .. " = "
+   if (randomOperation == 2) then correctAnswer = randomNumber1 - randomNumber2
+--create question in text object
+  questionObject.text = randomNumber1 .. " - " .. randomNumber2 .. " = "
+  elseif (correctAnswer < 0) then
+  	correctAnswer = randomNumber2 - randomNumber1
+  	questionObject.text = randomNumber2 .. " - " .. randomNumber1 .. " = "
+end
 
+if (randomOperation == 3) then correctAnswer = randomNumber3 * randomNumber4
+--create question in text object
+
+    questionObject.text = randomNumber3 .. " * " .. randomNumber4 .. " = "
+
+
+end
 end
 
 local function HideCorrect()
@@ -78,7 +96,7 @@ end
 -------------------------------------------------------------------------------------------
 
 --displays a question and sets the colour
-questionObject = display.newText( "", display.contentWidth/3, display.contentHeight/2, nil, 50)
+questionObject = display.newText( "", display.contentWidth/3, display.contentHeight/2, nil, 35)
 questionObject:setTextColor(155/255, 42/255, 198/255)
 
 --create the correct text object and make it invisible
@@ -87,7 +105,7 @@ correctObject:setTextColor(155/255, 42/255, 198/255)
 correctObject.isVisible = false
 
 --Create numeric field
-numericField = native.newTextField(500 ,350 , 150, 80 )
+numericField = native.newTextField(500 ,350 , 150, 100 )
 numericField.inputType = "number"
 
 --create the correct text object and make it invisible
